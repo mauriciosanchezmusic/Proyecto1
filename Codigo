@@ -1,0 +1,73 @@
+#include <iostream>
+#include <fstream> //añadimos la biblioteca de archivos
+#include <string.h> //añadimos la de strings
+
+using namespace std;
+
+void modificar (string &numerote, string buscar, string remplazar) //funcion para modificar
+{
+    int pos= numerote.find(buscar);
+    while (pos!= -1)
+    {
+        numerote.replace(pos,buscar.size(),remplazar);
+        pos= numerote.find(buscar);
+    }
+}
+
+void operacion (string &numero1 , string &numero2, char &signo)
+{
+
+}
+
+
+int main()
+{
+    string nombreArchivoEnt, nombreArchivoSal, texto;
+    char w,x,y,z;
+    string a,b,c,d,e,f,g,h,i,j;
+    string num1, num2;
+    int linea=1;
+    int contador=1;
+    ifstream archivoEnt;
+    ofstream archivoSal;
+
+    cout << "Ingresa el nombre del archivo de entrada" << endl;
+    cin >> nombreArchivoEnt;
+    cout << "Ingresa el nombre del archivo de salida" << endl;
+    cin >> nombreArchivoSal;
+
+    archivoEnt.open(nombreArchivoEnt.c_str());
+    archivoSal.open(nombreArchivoSal.c_str());
+
+
+    while (archivoEnt.eof())
+        {/*
+            if (linea==contador)
+            {
+                archivoEnt >>a>>b>>c>>d>>e>>f>>g>>h>>i>>j>>w>>x>>y>>z;
+                modificar(a, "B", "0");
+                modificar(b, "y", "1");
+                modificar(c, "/", "2");
+                modificar(d, "8", "3");
+                modificar(e, "T", "4");
+                modificar(f, "&", "5");
+                modificar(g, "Q", "6");
+                modificar(h, "E", "7");
+                modificar(i, "P", "8");
+                modificar(j, "F", "9");
+
+                contador ++;
+            }
+            else
+            {*/
+                getline (archivoEnt, texto);
+                archivoSal << texto << endl;
+           // }
+        }
+    archivoEnt.close();
+    archivoSal.close();
+
+
+
+        return 0;
+}
