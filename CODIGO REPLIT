@@ -1,0 +1,114 @@
+#include <iostream>
+#include <fstream> //añadimos la biblioteca de archivos
+#include <string.h> //añadimos la de strings
+
+using namespace std;
+
+int conver (string num1,char a,char b,char c,char d,char e,char f,char g,char h,char i,char j, string &numfin)
+{
+    for (int lop=0;lop<num1.length();lop++)
+              {
+                if (num1[lop]==a)
+                {
+                    numfin+="0";
+                }
+                else if (num1[lop]==b)
+                {
+                    numfin+="1";
+                }
+                else if (num1[lop]==c)
+                {
+                    numfin+="2";
+                }
+                else if (num1[lop]==d)
+                {
+                    numfin+="3";
+                }
+                else if (num1[lop]==e)
+                {
+                    numfin+="4";
+                }
+                else if (num1[lop]==f)
+                {
+                    numfin+="5";
+                }
+                else if (num1[lop]==g)
+                {
+                    numfin+="6";
+                }
+                else if (num1[lop]==h)
+                {
+                    numfin+="7";
+                }
+                else if (num1[lop]==i)
+                {
+                    numfin+="8";
+                }
+                else if (num1[lop]==j)
+                {
+                    numfin+="9";
+                }
+              }
+}
+
+void pasar (string num1,string num2, int &numA,int &numB)
+{
+    numA=stoi(num1);
+    numB=stoi(num2);
+}
+
+int main()
+{
+    string nombreArchivoEnt, nombreArchivoSal1, nombreArchivoSal2;
+    ifstream archivoEnt;
+    ofstream archivoSal;
+    string texto;
+    char tex;
+    char a,b,c,d,e,f,g,h,i,j;//codigo
+    char k,l,m,n;//operaciones
+    int x=0; //contadores
+    string num1, num2;
+    string numfin1, numfin2;
+    int numA, numB;
+    char operacion;
+    int extension;
+
+
+    cout << "Ingresa el nombre del archivo de entrada" << endl;
+    cin >> nombreArchivoEnt;
+    cout << "Ingresa el nombre del archivo de salida" << endl;
+    cin >> nombreArchivoSal1;
+
+    nombreArchivoSal2= nombreArchivoSal1 + ".txt";
+
+    archivoEnt.open(nombreArchivoEnt.c_str());
+    archivoSal.open(nombreArchivoSal2.c_str());
+
+
+    while ((x<1) && archivoEnt.get(tex))
+        {
+            archivoEnt>>a>>b>>c>>d>>e>>f>>g>>h>>i>>j>>k>>l>>m>>n;
+           x++;
+        }
+
+    while (x>=1 && getline(archivoEnt,texto))
+        {
+            archivoEnt>>num1>>operacion>>num2;
+
+            conver(num1,a,b,c,d,e,f,g,h,i,j,numfin1);
+            conver(num1,a,b,c,d,e,f,g,h,i,j,numfin2);
+            pasar(numfin1,numfin2,numA,numB);
+
+
+            archivoSal<<numA<<"   "<<numB<<endl;
+
+            x++;
+            numfin1.clear();
+            numfin2.clear();
+        }
+
+    archivoEnt.close();
+    archivoSal.close();
+
+        return 0;
+}
